@@ -7,7 +7,7 @@
     <title>Rich Text Editor</title>
     <script src="https://use.fontawesome.com/cd3bf59766.js"></script>
 </head>
-<body>
+<body onload="enableEditMode();">
     <div>
         <select>
             <option value="H1">H1</option>
@@ -31,6 +31,33 @@
         <button onclick="execCmd('files-o')"><i class="fa fa-files-o"></i></button>
         <button onclick="execCmd('scissors')"><i class="fa fa-scissors"></i></button>
     
+        <select>
+            <option value="Arial">Arial</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Courier">Courier</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Times New Roman">Times New Roman</option>
+        </select>
+
+        Fore Color: <input type="color">
+        Background Color: <input type="color">
     </div>
+
+    <iframe name="richTextField" style="width: 1000px; height: 1000px;"></iframe>
+
+    <script type="text/javascript">
+        
+        /* function to activate the edit mode in the iframe text box */
+        function enableEditMode () {
+            richTextField.document.designMode = 'On';
+        }
+
+        /* function for the buttons' action on the text */
+        function execCmd(command) {
+            richTextField.document.execCommand(command, false, null)
+        }
+    
+    </script>
 </body>
 </html>
